@@ -17,7 +17,7 @@ class WhenSearchingForTerms {
     /**
      * Define the webdriver instance to be used for these tests
      */
-    @Managed(driver = "chrome", options = "headless")
+    @Managed(driver = "chrome")
     WebDriver driver;
 
     /**
@@ -36,7 +36,6 @@ class WhenSearchingForTerms {
      */
     DisplayedArticle displayedArticle;
 
-    @Test
     void searchBySingleKeyword() {
         navigate.toTheHomePage();
         search.searchBy("Everest");
