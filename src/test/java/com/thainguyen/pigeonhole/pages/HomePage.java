@@ -13,7 +13,7 @@ public class HomePage extends UIInteractions {
         openUrl(PageUrlConstant.HOME_PAGE_URL);
     }
 
-    @Step("Input the Event passcode as {string}")
+    @Step("Input the Event passcode as {0}")
     public void inputEventPasscode(String eventPassCode){
         $("xpath://input[@id=\"passcodeInput\"]").sendKeys(eventPassCode);
         clickOn($("xpath://div[@class='passcode-entry-submit icon icon-v3-arrow-right-thick icon-lg']"));
@@ -22,8 +22,9 @@ public class HomePage extends UIInteractions {
     }
 
     public void inputAttendeeCode(String attendeeCode){
-        $("xpath://input[@class='passcode-entry-input'").sendKeys(attendeeCode);
-        waitForTextToAppear(attendeeCode);
+        WebElement textBox = $("xpath://input[@class='passcode-entry-input']");
+        textBox.sendKeys(attendeeCode);
+        clickOn($("//div[@class='passcode-entry-submit icon-v3-arrow-right-thick icon-lg']"));
 
     }
 
