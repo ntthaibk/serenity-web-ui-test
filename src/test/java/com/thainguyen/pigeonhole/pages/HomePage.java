@@ -16,13 +16,15 @@ public class HomePage extends UIInteractions {
     @Step("Input the Event passcode as {string}")
     public void inputEventPasscode(String eventPassCode){
         $("xpath://input[@id=\"passcodeInput\"]").sendKeys(eventPassCode);
-        clickOn($("//div[@class='passcode-entry-submit icon icon-v3-arrow-right-thick icon-lg']"));
-        waitForPresenceOf("xpath://div[@class='passcode-entry-submit icon icon-v3-tick-thick icon-lg'");
+        clickOn($("xpath://div[@class='passcode-entry-submit icon icon-v3-arrow-right-thick icon-lg']"));
+        waitForPresenceOf("xpath://div[contains(@class,'passcode-entry-submit icon icon-v3-tick-thick icon-lg')]");
 
     }
 
     public void inputAttendeeCode(String attendeeCode){
-        $("//input[@class='passcode-entry-input'").sendKeys(attendeeCode);
+        $("xpath://input[@class='passcode-entry-input'").sendKeys(attendeeCode);
+        waitForTextToAppear(attendeeCode);
+
     }
 
 }
