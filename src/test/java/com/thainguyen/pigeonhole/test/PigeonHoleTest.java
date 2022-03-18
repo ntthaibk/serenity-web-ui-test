@@ -1,5 +1,6 @@
 package com.thainguyen.pigeonhole.test;
 
+import com.thainguyen.pigeonhole.pages.CommonPage;
 import com.thainguyen.pigeonhole.pages.HomePage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
@@ -27,8 +28,10 @@ class PigeonHoleTest {
     @Test
     public void pigeonHoleFulLTest(){
         homePage.navigateToPigeonHoleHomePage();
+        homePage.verifyAtPage("Pigeonhole Live");
         homePage.inputEventPasscode("QATESTERHOME");
         homePage.inputAttendeeCode("RW6FAMQIK7ABYLN");
+
 
     }
 }
