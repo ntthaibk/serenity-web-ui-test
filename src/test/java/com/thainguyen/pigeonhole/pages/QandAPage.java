@@ -51,7 +51,7 @@ public class QandAPage extends BasePage{
     private int currentQuestionCommentListSize;
 
 
-    @Step("Ask Question with {0} Code")
+    @Step("And I Ask Question with {0} Code")
     public void askQuestionUsingCode(String attendeeCode){
         qAndATextArea.waitUntilClickable();
         this.currentQuestionListSize = questionList.size();
@@ -59,22 +59,22 @@ public class QandAPage extends BasePage{
         clickOn(askButton);
     }
 
-    @Step("Verify Modal Box Appeared")
+    @Step("Then I Verify Modal Box Appeared")
     public void verifyModalBoxAppeared(){
         waitForPresenceOf("//div[@class='modal-box']");
     }
 
-    @Step("Verify Modal Box Disappeared")
+    @Step("Then I Verify Modal Box Disappeared")
     public void verifyModalBoxDisappeared(){
         waitForAbsenceOf("//div[@class='modal-box']");
     }
 
-    @Step("Finish asking question")
+    @Step("And I Finish asking question")
     public void finishAskingQuestionInModalBox(){
         clickOn(modalBoxAskButton);
     }
 
-    @Step("Modal Box closed and Question List should be updated")
+    @Step("And I check All Modal Boxes closed and Question List should be updated")
     public void verifyQuestionListUpdated(){
         verifyModalBoxDisappeared();
         Serenity.reportThat(String.format("Current questions list number is [%s]'", questionList.size()),
@@ -83,7 +83,7 @@ public class QandAPage extends BasePage{
 
     }
 
-    @Step("Add comment {0} to newly created question")
+    @Step("And I Add comment {0} to newly created question")
     public void addCommentToLastQuestion(String comment){
         thankYouModalBox.waitUntilNotVisible();
         this.currentQuestionId = lastedQuestion.getAttribute("data-id");
@@ -92,7 +92,7 @@ public class QandAPage extends BasePage{
         inputIntoTextAreaOfComment(comment);
     }
 
-    @Step("verify at comment page")
+    @Step("Then I verify I'm at comment page")
     public void verifyAtCommentPage(){
         Serenity.reportThat(String.format("Current url with comment is [%s]'", currentQuestionId),
                 () -> assertThat(getDriver().getCurrentUrl().contains(currentQuestionId)).isTrue()
@@ -100,7 +100,7 @@ public class QandAPage extends BasePage{
 
     }
 
-    @Step("Input into comment text area")
+    @Step("And I Input into comment text area")
     public void inputIntoTextAreaOfComment(String comment){
         currentQuestionCommentListSize = questionComments.size();
         questionCommentTextArea.sendKeys(comment);
@@ -110,7 +110,7 @@ public class QandAPage extends BasePage{
         verifyModalBoxDisappeared();
     }
 
-    @Step("Verify Comment Appeared")
+    @Step("Then I Verify Comment Appeared")
     public void verifyCommentAppeared(String comment){
         thankYouModalBox.waitUntilNotVisible();
         Serenity.reportThat(String.format("Current questions comment list number is [%s]'", questionComments.size()),
@@ -120,14 +120,14 @@ public class QandAPage extends BasePage{
 
     }
 
-    @Step("Upvote the newly created comment")
+    @Step("And I Upvote the newly created comment")
     public void upvoteComment(String comment){
         this.lastQuestionCommentUpvoteButton = $(String.format("xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'comment-upvote')]", comment));
         clickOn(this.lastQuestionCommentUpvoteButton);
         waitForPresenceOf(String.format("//div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'active')]", comment));
     }
 
-    @Step("Verify comment upvoted")
+    @Step("Then I Verify comment upvoted")
     public void verifyCommentUpvoted(){
         String upvotedNumber = this.lastQuestionCommentUpvoteButton.getAttribute("innerText");
         Serenity.reportThat("question is upvoted",

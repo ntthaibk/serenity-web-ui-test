@@ -3,7 +3,6 @@ package com.thainguyen.pigeonhole.pages;
 import com.thainguyen.pigeonhole.constant.PageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
