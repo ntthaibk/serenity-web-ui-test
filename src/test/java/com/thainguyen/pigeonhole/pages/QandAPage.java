@@ -46,6 +46,11 @@ public class QandAPage extends BasePage{
 
     private WebElementFacade lastQuestionCommentUpvoteButton;
 
+    private final String modalBoxXpath = "xpath://div[@class='modal-box']";
+    private final String commentBoxXpath = "//div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']";
+    private final String upVoteButtonXpath = "xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'comment-upvote')]";
+    private final String activeUpVoteButtonXpath = "xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'active')]";
+
     private int currentQuestionListSize;
     private String currentQuestionId;
     private int currentQuestionCommentListSize;
@@ -61,12 +66,12 @@ public class QandAPage extends BasePage{
 
     @Step("Then I Verify Modal Box Appeared")
     public void verifyModalBoxAppeared(){
-        waitForPresenceOf("//div[@class='modal-box']");
+        waitForPresenceOf(modalBoxXpath);
     }
 
     @Step("Then I Verify Modal Box Disappeared")
     public void verifyModalBoxDisappeared(){
-        waitForAbsenceOf("//div[@class='modal-box']");
+        waitForAbsenceOf(modalBoxXpath);
     }
 
     @Step("And I Finish asking question")
@@ -116,22 +121,22 @@ public class QandAPage extends BasePage{
         Serenity.reportThat(String.format("Current questions comment list number is [%s]'", questionComments.size()),
                 () -> assertThat(questionComments.size()).isEqualTo(currentQuestionCommentListSize +1)
         );
-        waitForPresenceOf(String.format("//div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']", comment));
+        waitForPresenceOf(String.format(commentBoxXpath, comment));
 
     }
 
     @Step("And I Upvote the newly created comment")
     public void upvoteComment(String comment){
-        this.lastQuestionCommentUpvoteButton = $(String.format("xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'comment-upvote')]", comment));
+        this.lastQuestionCommentUpvoteButton = $(String.format(upVoteButtonXpath, comment));
         clickOn(this.lastQuestionCommentUpvoteButton);
-        waitForPresenceOf(String.format("//div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'active')]", comment));
+        waitForPresenceOf(String.format(activeUpVoteButtonXpath, comment));
     }
 
     @Step("Then I Verify comment upvoted")
-    public void verifyCommentUpvoted(){
-        String upvotedNumber = this.lastQuestionCommentUpvoteButton.getAttribute("innerText");
+    public void verifyCommentUpVoted(){
+        String upVotedNumber = this.lastQuestionCommentUpvoteButton.getAttribute("innerText");
         Serenity.reportThat("question is upvoted",
-                () -> assertThat(upvotedNumber.contains("1")).isTrue()
+                () -> assertThat(upVotedNumber.contains("1")).isTrue()
         );
 
 
