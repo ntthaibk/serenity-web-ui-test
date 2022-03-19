@@ -26,6 +26,7 @@ In order to run the test, please follow the steps-by-steps guidance below.
 - Clone this github repository to your local using CLI or the tool of choice (in my case it's Github Desktop)
 - Open the project using your favorite IDE. In case of prompting for Gradle or Maven please chose maven
 - Install maven and adding maven support to your IDE.
+- Install Java 11 or above (code tested with Java 11)
 
 ### Running the Test
 
