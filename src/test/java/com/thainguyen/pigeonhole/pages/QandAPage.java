@@ -3,9 +3,12 @@ package com.thainguyen.pigeonhole.pages;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,7 +53,7 @@ public class QandAPage extends BasePage{
     private final String commentBoxXpath = "//div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']";
     private final String upVoteButtonXpath = "xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'comment-upvote')]";
     private final String activeUpVoteButtonXpath = "xpath://div[contains(@class,'comment-item')][last()]//div[@class='comment-text-box'][.//text()='%s']/following::button[contains(@class,'active')]";
-
+    private int currentUpVotedNumber;
     private int currentQuestionListSize;
     private String currentQuestionId;
     private int currentQuestionCommentListSize;
@@ -128,16 +131,29 @@ public class QandAPage extends BasePage{
     @Step("And I Upvote the newly created comment")
     public void upvoteComment(String comment){
         this.lastQuestionCommentUpvoteButton = $(String.format(upVoteButtonXpath, comment));
+        this.currentUpVotedNumber = getNumberFromString(this.lastQuestionCommentUpvoteButton.getAttribute("innerText"));
         clickOn(this.lastQuestionCommentUpvoteButton);
         waitForPresenceOf(String.format(activeUpVoteButtonXpath, comment));
     }
 
-    @Step("Then I Verify comment upvoted")
+    @Step("Then I Verify comment upVoted increase by 1")
     public void verifyCommentUpVoted(){
-        String upVotedNumber = this.lastQuestionCommentUpvoteButton.getAttribute("innerText");
-        Serenity.reportThat("question is upvoted",
-                () -> assertThat(upVotedNumber.contains("1")).isTrue()
+        int upVotedNumber = getNumberFromString(this.lastQuestionCommentUpvoteButton.getAttribute("innerText"));
+        Serenity.reportThat("question is up voted",
+                () -> assertThat(upVotedNumber).isEqualTo(this.currentUpVotedNumber+1)
         );
+
+
+    }
+
+    private int getNumberFromString(String str){
+        Pattern NUMBER_PATTERN =  Pattern.compile("\\d+");
+        Matcher m = NUMBER_PATTERN.matcher(str);
+        String result = "";
+        while(m.find()){
+            result = m.group(0);
+        }
+        return Integer.parseInt(result);
 
 
     }
