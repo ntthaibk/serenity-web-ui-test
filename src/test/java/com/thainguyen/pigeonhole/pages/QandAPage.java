@@ -3,7 +3,6 @@ package com.thainguyen.pigeonhole.pages;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
