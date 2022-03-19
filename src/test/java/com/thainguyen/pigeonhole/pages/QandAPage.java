@@ -138,7 +138,7 @@ public class QandAPage extends BasePage{
     @Step("Then I Verify comment upVoted increase by 1")
     public void verifyCommentUpVoted(){
         int upVotedNumber = getNumberFromString(this.lastQuestionCommentUpvoteButton.getAttribute("innerText"));
-        Serenity.reportThat("question is up voted",
+        Serenity.reportThat(String.format("question is up voted, previously [%d], after that [%d]", this.currentUpVotedNumber, upVotedNumber),
                 () -> assertThat(upVotedNumber).isEqualTo(this.currentUpVotedNumber+1)
         );
 

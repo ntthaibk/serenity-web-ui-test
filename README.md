@@ -14,6 +14,7 @@
     - [Running the Test](#running-the-test)
     - [Running the Test with parameter](#running-the-test-with-parameter)
     - [Test Report](#test-report)
+    - [Definition Of Done](#definition-of-done)
   - [Test Framework](#test-framework)
   - [Limitation(s)](#limitations)
 
@@ -46,6 +47,9 @@ In order to run the test, please follow the steps-by-steps guidance below.
 - click on the link (notice that sometime IntelliJ will not recognize full link so please copy the link from file://....)
 - The test report will look like this
 - ![report]
+
+### Definition of Done
+- The test is done when successively passed 3 times in a row
 
 
 
