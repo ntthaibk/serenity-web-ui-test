@@ -1,15 +1,23 @@
 package com.thainguyen.pigeonhole.pages;
 
 import com.thainguyen.pigeonhole.constant.PageUrlConstant;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
 
-    private final WebElement passCodeInputTextBox = $("xpath://input[@id=\"passcodeInput\"]");
-    private final WebElement passCodeRightArrow = $("xpath://div[@class='passcode-entry-submit icon icon-v3-arrow-right-thick icon-lg']");
-    private final WebElement passCodeEntryInputTextBox = $("xpath://input[@class='passcode-entry-input']");
-    private final WebElement passCodeEntryInputRightArrow = $("//div[@class='passcode-entry-submit icon-v3-arrow-right-thick icon-lg']");
+    @FindBy(xpath = "//input[@id=\"passcodeInput\"]")
+    private WebElementFacade passCodeInputTextBox;
+    @FindBy(xpath = "//div[@class='passcode-entry-submit icon icon-v3-arrow-right-thick icon-lg']")
+    private WebElementFacade passCodeRightArrow;
+
+    @FindBy(xpath = "//input[@class='passcode-entry-input']")
+    private WebElementFacade passCodeEntryInputTextBox;
+
+    @FindBy(xpath = "//div[@class='passcode-entry-submit icon-v3-arrow-right-thick icon-lg']" )
+    private WebElementFacade passCodeEntryInputRightArrow;
 
 
 
@@ -29,6 +37,7 @@ public class HomePage extends BasePage {
     public void inputAttendeeCode(String attendeeCode){
         passCodeEntryInputTextBox.sendKeys(attendeeCode);
         clickOn(passCodeEntryInputRightArrow);
+        passCodeInputTextBox.waitUntilNotVisible();
     }
 
 }

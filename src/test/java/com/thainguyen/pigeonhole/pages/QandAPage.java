@@ -2,26 +2,40 @@ package com.thainguyen.pigeonhole.pages;
 
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.ListOfWebElementFacades;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class QandAPage extends BasePage{
 
-    private final WebElement qAndATextArea = $("//textarea[@class='question-input question-input-no-radius']");
-    private final WebElement askButton = $("//button[./div[@class='question-input-btn-content']]");
-    private final WebElement modalBoxAskButton = $("//div[@class='modal-box']//button[text()[normalize-space() = 'Ask']]");
-    private final ListOfWebElementFacades questionList = $$("//div[@class='question-list-container ']/div");
-    private final WebElement lastedQuestionAddCommentBox = $("//div[@class='question-list-container ']/div[1]//span[text()[normalize-space() = 'Add a comment']]");
+    @FindBy(xpath = "//textarea[@class='question-input']")
+    private  WebElementFacade qAndATextArea;
+
+    @FindBy(xpath = "//button[./div[@class='question-input-btn-content']]")
+    private  WebElementFacade askButton;
+
+    @FindBy(xpath = "//div[@class='modal-box']//button[text()[normalize-space() = 'Ask']]")
+    private  WebElementFacade modalBoxAskButton;
+
+    @FindBy(xpath = "//div[@class='question-list-container ']/div")
+    private List<WebElementFacade> questionList;
+
+    @FindBy(xpath = "//div[@class='question-list-container ']/div[1]//span[text()[normalize-space() = 'Add a comment']]")
+    private  WebElementFacade lastedQuestionAddCommentBox;
     private int currentQuestionListSize;
+    private String currentQuestionId;
+
 
     @Step("Ask Question with {0} Code")
     public void askQuestionUsingCode(String attendeeCode){
+        qAndATextArea.waitUntilClickable();
         this.currentQuestionListSize = questionList.size();
         qAndATextArea.sendKeys(attendeeCode);
         clickOn(askButton);
-
     }
 
     @Step("Verify Modal Box Appeared")
@@ -45,7 +59,17 @@ public class QandAPage extends BasePage{
 
     @Step("Add comment to newly created question")
     public void addCommentToLastQuestion(){
+        this.currentQuestionId = lastedQuestionAddCommentBox.getAttribute("data-id");
         clickOn(lastedQuestionAddCommentBox);
+        verifyAtCommentPage();
+    }
+
+    @Step("verify at comment page")
+    public void verifyAtCommentPage(){
+        Serenity.reportThat(String.format("Current url with comment is [%s]'", currentQuestionId),
+                () -> assertThat(getDriver().getCurrentUrl().contains(currentQuestionId)).isTrue()
+        );
+
     }
 
 

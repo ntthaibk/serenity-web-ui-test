@@ -14,9 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SerenityJUnit5Extension.class)
 class PigeonHoleTest {
 
-    /**
-     * Define the webdriver instance to be used for these tests
-     */
     @Managed()
     WebDriver driver;
 
@@ -28,7 +25,7 @@ class PigeonHoleTest {
     private static final String ATTENDEE_CODE = "RW6FAMQIK7ABYLN";
 
     @Test
-    public void pigeonHoleFulLTest(){
+    public void pigeonHoleFullTest(){
         homePage.navigateToPigeonHoleHomePage();
         homePage.verifyAtPage("Pigeonhole Live");
         homePage.inputEventPasscode(EVENT_PASS_CODE);
@@ -36,6 +33,11 @@ class PigeonHoleTest {
         agendaPage.verifyNavigatedToPage(EVENT_PASS_CODE);
         agendaPage.clickOnQAButton();
         qAndAPAge.verifyAtPage("Q&A - Pigeonhole Live");
+        qAndAPAge.askQuestionUsingCode(EVENT_PASS_CODE);
+        qAndAPAge.verifyModalBoxAppeared();
+        qAndAPAge.finishAskingQuestionInModalBox();
+        qAndAPAge.verifyQuestionListUpdated();
+        qAndAPAge.addCommentToLastQuestion();
 
 
 
