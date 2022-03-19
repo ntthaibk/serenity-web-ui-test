@@ -1,16 +1,13 @@
 package com.thainguyen.pigeonhole.test;
 
-import com.thainguyen.pigeonhole.pages.CommonPage;
+import com.thainguyen.pigeonhole.pages.AgendaPage;
 import com.thainguyen.pigeonhole.pages.HomePage;
-import net.serenitybdd.core.Serenity;
+import com.thainguyen.pigeonhole.pages.QandAPage;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Managed;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import starter.wikipedia.DisplayedArticle;
-import starter.wikipedia.NavigateActions;
-import starter.wikipedia.SearchActions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,13 +21,22 @@ class PigeonHoleTest {
     WebDriver driver;
 
     HomePage homePage;
+    AgendaPage agendaPage;
+    QandAPage qAndAPAge;
+
+    private static final String EVENT_PASS_CODE = "QATESTERHOME";
+    private static final String ATTENDEE_CODE = "RW6FAMQIK7ABYLN";
 
     @Test
     public void pigeonHoleFulLTest(){
         homePage.navigateToPigeonHoleHomePage();
         homePage.verifyAtPage("Pigeonhole Live");
-        homePage.inputEventPasscode("QATESTERHOME");
-        homePage.inputAttendeeCode("RW6FAMQIK7ABYLN");
+        homePage.inputEventPasscode(EVENT_PASS_CODE);
+        homePage.inputAttendeeCode(ATTENDEE_CODE);
+        agendaPage.verifyNavigatedToPage(EVENT_PASS_CODE);
+        agendaPage.clickOnQAButton();
+        qAndAPAge.verifyAtPage("Q&A - Pigeonhole Live");
+
 
 
     }
