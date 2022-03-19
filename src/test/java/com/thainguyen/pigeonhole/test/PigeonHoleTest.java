@@ -37,9 +37,9 @@ class PigeonHoleTest {
         qAndAPAge.verifyModalBoxAppeared();
         qAndAPAge.finishAskingQuestionInModalBox();
         qAndAPAge.verifyQuestionListUpdated();
-        qAndAPAge.addCommentToLastQuestion();
-
-
-
+        qAndAPAge.addCommentToLastQuestion(EVENT_PASS_CODE);
+        qAndAPAge.verifyCommentAppeared(EVENT_PASS_CODE);
+        qAndAPAge.upvoteComment(EVENT_PASS_CODE);
+        qAndAPAge.verifyCommentUpvoted();
     }
 }
