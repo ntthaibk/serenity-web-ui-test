@@ -1,6 +1,6 @@
-package com.thainguyen.pigeonhole.pages;
+package com.thainguyen.serenitypic.pages;
 
-import com.thainguyen.pigeonhole.constant.PageUrlConstant;
+import com.thainguyen.serenitypic.constant.PageUrlConstant;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;
@@ -8,6 +8,8 @@ import net.thucydides.core.annotations.Step;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BasePage extends UIInteractions {
+
+    protected String button1 = "xpath://%s";
 
     @Step("Then I verify that I'm at {0} page")
     public void verifyAtPage(String expectedPageTitle){

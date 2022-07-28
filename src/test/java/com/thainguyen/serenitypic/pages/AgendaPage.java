@@ -1,4 +1,4 @@
-package com.thainguyen.pigeonhole.pages;
+package com.thainguyen.serenitypic.pages;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
