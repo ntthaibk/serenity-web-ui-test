@@ -2,13 +2,14 @@
 
 [reportloc]: docs/reportloc.png "reportLocation"
 [report]: docs/report.png "report"
-# Pigeon Hole Take Home Test
+# Serenity WebUI test
 
 ----
 
+SUT: demo test for a friend
 @**author**: Thai Nguyen
 
-- [Pigeon Hole Take Home Test](#pigeon-hole-take-home-test)
+- [Serenity WebUI test](#main)
   - [Getting Started](#getting-started)
     - [Getting the project](#getting-the-project)
     - [Running the Test](#running-the-test)
