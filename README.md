@@ -6,7 +6,8 @@
 
 ----
 
-SUT: demo test for a friend
+Automation framework using SerenityBDD and JUnit4 for WebUI Testing.
+
 @**author**: Thai Nguyen
 
 - [Serenity WebUI test](#main)
