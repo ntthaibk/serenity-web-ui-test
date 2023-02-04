@@ -1,6 +1,6 @@
-package com.thainguyen.serenitypic.pages;
+package com.cb.testing.pages.demo;
 
-import com.thainguyen.serenitypic.constant.PageUrlConstant;
+import com.cb.testing.constant.PageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.FindBy;

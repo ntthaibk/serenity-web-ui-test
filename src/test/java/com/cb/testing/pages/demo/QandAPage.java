@@ -1,4 +1,4 @@
-package com.thainguyen.serenitypic.pages;
+package com.cb.testing.pages.demo;
 
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;

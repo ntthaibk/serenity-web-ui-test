@@ -7,7 +7,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Pigeon Hole Test</name>
+    <name>CB Automation Test</name>
 
     <properties>
         <serenity.version>3.2.0</serenity.version>

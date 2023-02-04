@@ -1,6 +1,6 @@
-package com.thainguyen.serenitypic.pages;
+package com.cb.testing.pages.demo;
 
-import com.thainguyen.serenitypic.constant.PageUrlConstant;
+import com.cb.testing.constant.PageUrlConstant;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;

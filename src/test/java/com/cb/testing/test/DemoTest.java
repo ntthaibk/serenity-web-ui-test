@@ -1,8 +1,8 @@
-package com.thainguyen.serenitypic.test;
+package com.cb.testing.test;
 
-import com.thainguyen.serenitypic.pages.AgendaPage;
-import com.thainguyen.serenitypic.pages.HomePage;
-import com.thainguyen.serenitypic.pages.QandAPage;
+import com.cb.testing.pages.demo.HomePage;
+import com.cb.testing.pages.demo.QandAPage;
+import com.cb.testing.pages.demo.AgendaPage;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Managed;
 import org.junit.jupiter.api.Test;
