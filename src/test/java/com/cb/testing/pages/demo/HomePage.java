@@ -1,6 +1,6 @@
 package com.cb.testing.pages.demo;
 
-import com.cb.testing.constant.PageUrlConstant;
+import com.cb.testing.constant.DemoPageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
 
     @Step("Given I Navigate to homePage of PigeonHole")
     public void navigateToPigeonHoleHomePage(){
-        openUrl(PageUrlConstant.HOME_PAGE_URL);
+        openUrl(DemoPageUrlConstant.HOME_PAGE_URL);
     }
 
     @Step("And I Input the Event passcode as {0}")

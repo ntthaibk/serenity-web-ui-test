@@ -1,6 +1,6 @@
 package com.cb.testing.pages.demo;
 
-import com.cb.testing.constant.PageUrlConstant;
+import com.cb.testing.constant.DemoPageUrlConstant;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;
@@ -22,8 +22,8 @@ public class BasePage extends UIInteractions {
     @Step("Then I verify I've navigated to {0} page")
     public void verifyNavigatedToPage(String expectedPageUrl){
         String pageUrl = getDriver().getCurrentUrl();
-        Serenity.reportThat(String.format("Current url should be [%s]'", String.format(PageUrlConstant.AGENDA_PAGE,expectedPageUrl)),
-                () -> assertThat(pageUrl).isEqualTo(String.format(PageUrlConstant.AGENDA_PAGE,expectedPageUrl))
+        Serenity.reportThat(String.format("Current url should be [%s]'", String.format(DemoPageUrlConstant.AGENDA_PAGE,expectedPageUrl)),
+                () -> assertThat(pageUrl).isEqualTo(String.format(DemoPageUrlConstant.AGENDA_PAGE,expectedPageUrl))
         );
 
     }

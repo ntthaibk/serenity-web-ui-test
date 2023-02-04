@@ -12,6 +12,7 @@ public class AgendaPage extends BasePage {
     @Step("And I Click on Q&A button")
     public void clickOnQAButton(){
         clickOn(enterThisQAButton);
+
     }
 
 }
