@@ -105,7 +105,7 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("check these checkboxes")
-    public void clickOnTheCheckBox(List<Integer> checkBoxIds){
+    public void clickOnTheCheckBox(List<String> checkBoxIds){
         checkBoxIds.forEach(
                 checkBoxId -> {
                     WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));

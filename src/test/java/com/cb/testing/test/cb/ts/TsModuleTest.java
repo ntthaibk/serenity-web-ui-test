@@ -51,9 +51,9 @@ public class TsModuleTest {
 
         Thread.sleep(4000);
 
-        List<Integer> checkBoxIds = new ArrayList<>();
-        checkBoxIds.add(74);
-        checkBoxIds.add(8);
+        List<String> checkBoxIds = new ArrayList<>();
+        checkBoxIds.add("10");
+        checkBoxIds.add("8");
         adminPage.clickOnTheCheckBox(checkBoxIds);
 
         Thread.sleep(2000);
