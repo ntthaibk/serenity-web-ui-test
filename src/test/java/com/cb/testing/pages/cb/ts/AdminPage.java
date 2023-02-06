@@ -22,6 +22,15 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//li[@id= \"yui-gen1\"]")
     private WebElementFacade employerButton;
 
+    @FindBy(xpath = "//*[@name = \"chkSearchBy\" and @value=\"1\"]")
+    private WebElementFacade keywordButton;
+
+    @FindBy(xpath = "//*[@name = \"keyword\" and @id=\"id_keyword_1\"]")
+    private WebElementFacade inputKeyword;
+
+    @FindBy(xpath = "//*[@name = \"btnSearch\" and @value=\" Filter\"]")
+    private WebElementFacade filterButton;
+
     @Step("navigate to ts admin page")
     public void navigateAdminLoginPage() {
         String fullPageURL = TsPageUrlConstant.TS_HOME_PAGE+LOGIN_PATH;
@@ -40,5 +49,14 @@ public class AdminPage extends BaseTsPage {
     public void clickOnEmployerButton(){
         employerButton.click();
 
+    }
+
+    public void clickOnKeyword(){
+        keywordButton.click();
+    }
+
+    public void setInputKeyword(){
+        inputKeyword.sendKeys("dhphuxuan");
+        clickOn(filterButton);
     }
 }

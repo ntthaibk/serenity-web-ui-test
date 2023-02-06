@@ -26,6 +26,15 @@ public class TsModuleTest {
         adminPage.clickOnEmployerButton();
 
         Thread.sleep(4000);
+
+        adminPage.clickOnKeyword();
+
+        Thread.sleep(4000);
+
+        adminPage.setInputKeyword();
+
+        Thread.sleep(4000);
+
     }
 
 
