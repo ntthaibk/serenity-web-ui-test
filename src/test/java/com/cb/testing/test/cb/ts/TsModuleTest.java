@@ -49,7 +49,7 @@ public class TsModuleTest {
 
         adminPage.configFunctionAddOn();
 
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
         List<Integer> checkBoxIds = new ArrayList<>();
         checkBoxIds.add(74);

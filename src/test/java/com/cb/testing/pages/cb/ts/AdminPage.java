@@ -108,7 +108,7 @@ public class AdminPage extends BaseTsPage {
     public void clickOnTheCheckBox(List<Integer> checkBoxIds){
         checkBoxIds.forEach(
                 checkBoxId -> {
-                    WebElementFacade currentCheckbox = this.checkbox.findBy(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));
+                    WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));
                     clickOn(currentCheckbox);
                     try {
                         Thread.sleep(500);
