@@ -25,7 +25,7 @@ public class TsModuleTest {
 
         adminPage.clickOnEmployerButton();
 
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
         adminPage.clickOnKeyword();
 
@@ -39,7 +39,7 @@ public class TsModuleTest {
 
         Thread.sleep(2000);
 
-        adminPage.switchToNextTab("");
+        adminPage.switchToNextTab();
 
         Thread.sleep(2000);
 
