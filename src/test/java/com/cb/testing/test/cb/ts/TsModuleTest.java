@@ -29,9 +29,17 @@ public class TsModuleTest {
 
         adminPage.clickOnKeyword();
 
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
         adminPage.setInputKeyword();
+
+        Thread.sleep(2000);
+
+        adminPage.setConfigOwner();
+
+        Thread.sleep(2000);
+
+        adminPage.configFunctionAddOn();
 
         Thread.sleep(4000);
 
