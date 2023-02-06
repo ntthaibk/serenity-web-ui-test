@@ -41,6 +41,8 @@ public class TsModuleTest {
 
         adminPage.switchToNextTab("");
 
+        Thread.sleep(2000);
+
         adminPage.configFunctionAddOn();
 
         Thread.sleep(4000);
