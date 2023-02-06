@@ -4,8 +4,10 @@ import com.cb.testing.constant.TsPageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.Instrumented;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -39,8 +41,12 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//a[@href=\"javascript:editRw('dhphuxuan')\"]")
     private WebElementFacade configOwner;
 
-    @FindBy(xpath = "//li[@class=\"ui-state-default ui-corner-top ui-tabs-selected ui-state-active\"]")
+    @FindBy(xpath = "//a[contains(text(),'Config function Add On')]")
     private WebElementFacade configAddOnTab;
+
+    @FindBy(xpath = "//input[@name=\"chk[]\" and @value = '8']")
+    private WebElementFacade selectSurveyBox;
+
 
     @Step("navigate to ts admin page")
     public void navigateAdminLoginPage() {
@@ -94,9 +100,11 @@ public class AdminPage extends BaseTsPage {
         getDriver().switchTo().window(reqWindow);
     }
 
-
     @Step("click on config add on tab")
     public void configFunctionAddOn() {
         configAddOnTab.click();
     }
+    
+
+
 }

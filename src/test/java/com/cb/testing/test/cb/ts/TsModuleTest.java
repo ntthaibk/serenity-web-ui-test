@@ -46,7 +46,7 @@ public class TsModuleTest {
 
         adminPage.configFunctionAddOn();
 
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
     }
 
