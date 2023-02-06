@@ -44,8 +44,7 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//a[contains(text(),'Config function Add On')]")
     private WebElementFacade configAddOnTab;
 
-    @FindBy(xpath = "//input[@name=\"chk[]\" and @value = '8']")
-    private WebElementFacade selectSurveyBox;
+    private WebElementFacade checkbox;
 
 
     @Step("navigate to ts admin page")
@@ -103,6 +102,21 @@ public class AdminPage extends BaseTsPage {
     @Step("click on config add on tab")
     public void configFunctionAddOn() {
         configAddOnTab.click();
+    }
+
+    @Step("check these checkboxes")
+    public void clickOnTheCheckBox(List<Integer> checkBoxIds){
+        checkBoxIds.forEach(
+                checkBoxId -> {
+                    WebElementFacade currentCheckbox = this.checkbox.findBy(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));
+                    clickOn(currentCheckbox);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
     }
     
 

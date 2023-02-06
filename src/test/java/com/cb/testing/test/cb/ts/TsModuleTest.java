@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ExtendWith(SerenityJUnit5Extension.class)
 public class TsModuleTest {
 
@@ -47,6 +50,11 @@ public class TsModuleTest {
         adminPage.configFunctionAddOn();
 
         Thread.sleep(2000);
+
+        List<Integer> checkBoxIds = new ArrayList<>();
+        checkBoxIds.add(74);
+        checkBoxIds.add(8);
+        adminPage.clickOnTheCheckBox(checkBoxIds);
 
     }
 
