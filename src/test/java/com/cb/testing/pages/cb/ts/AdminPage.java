@@ -74,11 +74,14 @@ public class AdminPage extends BaseTsPage {
         configOwner.click();
     }
 
+    @Step("Switch to Next Tab")
+    public void switchToNextTab(String tabName) throws InterruptedException {
+        getDriver().switchTo().window(tabName);
     }
 
 
     @Step("click on config add on tab")
-    public void configFunctionAddOn(){
+    public void configFunctionAddOn() {
         configAddOnTab.click();
     }
 }
