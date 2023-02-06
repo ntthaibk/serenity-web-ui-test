@@ -56,6 +56,8 @@ public class TsModuleTest {
         checkBoxIds.add(8);
         adminPage.clickOnTheCheckBox(checkBoxIds);
 
+        Thread.sleep(2000);
+
     }
 
 
