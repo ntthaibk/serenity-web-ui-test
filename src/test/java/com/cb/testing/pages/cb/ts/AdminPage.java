@@ -6,6 +6,10 @@ import net.serenitybdd.core.steps.Instrumented;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class AdminPage extends BaseTsPage {
 
     private static final String LOGIN_PATH = "login";
@@ -75,8 +79,19 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Switch to Next Tab")
-    public void switchToNextTab(String tabName) throws InterruptedException {
-        getDriver().switchTo().window(tabName);
+    public void switchToNextTab(String tabName) {
+        String currentWindow = getDriver().getWindowHandle();
+        if(!currentWindow.equalsIgnoreCase(tabName)){
+            getDriver().switchTo().window(tabName);
+        }
+    }
+
+    @Step("Switch to next Tab by ID")
+    public void switchToNextTabById(int index){
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        List<String> windowStrings = new ArrayList<>(windowHandles);
+        String reqWindow = windowStrings.get(index);
+        getDriver().switchTo().window(reqWindow);
     }
 
 

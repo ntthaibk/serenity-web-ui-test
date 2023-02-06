@@ -15,6 +15,7 @@ public class TsModuleTest {
 
     AdminPage adminPage;
 
+
     @Test
     public void testTSPage () throws InterruptedException {
         adminPage.navigateAdminLoginPage();
@@ -39,7 +40,7 @@ public class TsModuleTest {
 
         Thread.sleep(2000);
 
-        adminPage.switchToNextTab();
+        adminPage.switchToNextTabById(1);
 
         Thread.sleep(2000);
 
