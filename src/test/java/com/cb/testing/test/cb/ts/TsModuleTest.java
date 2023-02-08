@@ -61,8 +61,17 @@ public class TsModuleTest {
 
         Thread.sleep(2000);
 
+        adminPage.switchToPreviousTabByID(0);
 
+        Thread.sleep(2000);
 
+        adminPage.configMenu();
+
+        Thread.sleep(2000);
+
+        adminPage.switchToNextTabByID(2);
+
+        Thread.sleep(2000);
 
 
     }

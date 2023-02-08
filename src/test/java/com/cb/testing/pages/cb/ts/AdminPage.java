@@ -45,8 +45,12 @@ public class AdminPage extends BaseTsPage {
     private WebElementFacade configAddOnTab;
 
 
-    @FindBy(xpath = "//body/div[@id='container']/div[@id='configTalent']/div[2]/div[1]/form[1]/div[1]/div[3]/div[5]/div[1]/input[1]")
+    @FindBy(xpath = "//div[@id = 'tab_Addon']//div[@class = 'col_right']/input[contains(@type,'button')]")
     private WebElementFacade saveAddOnButton;
+
+    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/news/index/owner/dhphuxuan\"]")
+    private WebElementFacade configMenuButton;
+
 
 
     @Step("navigate to ts admin page")
@@ -126,4 +130,143 @@ public class AdminPage extends BaseTsPage {
         saveAddOnButton.click();
     }
 
-}
+    public void switchToPreviousTabByID (int index){
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        List<String> windowStrings = new ArrayList<>(windowHandles);
+        String preWindow = windowStrings.get(index);
+        getDriver().switchTo().window(preWindow);
+    }
+
+    public void configMenu(){
+        configMenuButton.click();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
