@@ -53,10 +53,17 @@ public class TsModuleTest {
 
         List<String> checkBoxIds = new ArrayList<>();
         checkBoxIds.add("10");
-        checkBoxIds.add("8");
+        checkBoxIds.add("19");
         adminPage.clickOnTheCheckBox(checkBoxIds);
+        Thread.sleep(2000);
+
+        adminPage.clickOnSaveButtonAddOn();
 
         Thread.sleep(2000);
+
+
+
+
 
     }
 

@@ -44,7 +44,9 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//a[contains(text(),'Config function Add On')]")
     private WebElementFacade configAddOnTab;
 
-    private WebElementFacade checkbox;
+
+    @FindBy(xpath = "//body/div[@id='container']/div[@id='configTalent']/div[2]/div[1]/form[1]/div[1]/div[3]/div[5]/div[1]/input[1]")
+    private WebElementFacade saveAddOnButton;
 
 
     @Step("navigate to ts admin page")
@@ -118,7 +120,10 @@ public class AdminPage extends BaseTsPage {
                 }
         );
     }
-    
 
+    @Step("Save config add on")
+    public void clickOnSaveButtonAddOn(){
+        saveAddOnButton.click();
+    }
 
 }
