@@ -52,10 +52,47 @@ public class AdminPage extends BaseTsPage {
     private WebElementFacade configMenuButton;
 
 
+    @FindBy(xpath = "//input[@value = 'Add New']")
+    private WebElementFacade addNewButton;
+
+    @FindBy(xpath = "//input[@name = 'txtName[en]']")
+    private WebElementFacade insertMenuEn;
+
+    @FindBy(xpath = "//input[@name = 'txtName[vi]']")
+    private WebElementFacade insertMenuVi;
+
+    @FindBy(xpath = "//select[@name = 'selMainCate']")
+    private WebElementFacade selectMain;
+
+    @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '7']")
+    private WebElementFacade optionHome;
+
+
+    @FindBy(xpath = "//input[@name = 'txtOrder']")
+    private WebElementFacade priorityField;
+
+    @FindBy(xpath = "//div[@id ='result_search']//input[@value = 'Save']")
+    private WebElementFacade saveMenuButton;
+
+    @FindBy(xpath = "//input[@value= '2']")
+    private WebElementFacade optionPage;
+
+    @FindBy(xpath = "//input[@value= '3']")
+    private WebElementFacade optionList;
+
+    @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '6']")
+    private WebElementFacade optionContact;
+
+    @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '3']")
+    private WebElementFacade optionCareer;
+
+    @FindBy(xpath = "//a[@href=\"javascript:window.close()\"]")
+    private WebElementFacade closeMenu;
+
 
     @Step("navigate to ts admin page")
     public void navigateAdminLoginPage() {
-        String fullPageURL = TsPageUrlConstant.TS_HOME_PAGE+LOGIN_PATH;
+        String fullPageURL = TsPageUrlConstant.TS_HOME_PAGE + LOGIN_PATH;
         openUrl(fullPageURL);
     }
 
@@ -67,19 +104,20 @@ public class AdminPage extends BaseTsPage {
         clickOn(enterButton);
 
     }
+
     @Step("click on employer button")
-    public void clickOnEmployerButton(){
+    public void clickOnEmployerButton() {
         employerButton.click();
 
     }
 
     @Step("click on keyword")
-    public void clickOnKeyword(){
+    public void clickOnKeyword() {
         keywordButton.click();
     }
 
     @Step("input keyword")
-    public void setInputKeyword(){
+    public void setInputKeyword() {
         inputKeyword.sendKeys("dhphuxuan");
         clickOn(filterButton);
     }
@@ -92,13 +130,13 @@ public class AdminPage extends BaseTsPage {
     @Step("Switch to Next Tab")
     public void switchToNextTab(String tabName) {
         String currentWindow = getDriver().getWindowHandle();
-        if(!currentWindow.equalsIgnoreCase(tabName)){
+        if (!currentWindow.equalsIgnoreCase(tabName)) {
             getDriver().switchTo().window(tabName);
         }
     }
 
     @Step("Switch to next Tab by ID")
-    public void switchToNextTabById(int index){
+    public void switchToNextTabById(int index) {
         Set<String> windowHandles = getDriver().getWindowHandles();
         List<String> windowStrings = new ArrayList<>(windowHandles);
         String reqWindow = windowStrings.get(index);
@@ -111,7 +149,7 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("check these checkboxes")
-    public void clickOnTheCheckBox(List<String> checkBoxIds){
+    public void clickOnTheCheckBox(List<String> checkBoxIds) {
         checkBoxIds.forEach(
                 checkBoxId -> {
                     WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));
@@ -126,20 +164,102 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Save config add on")
-    public void clickOnSaveButtonAddOn(){
+    public void clickOnSaveButtonAddOn() {
         saveAddOnButton.click();
+        getDriver().close();
     }
 
-    public void switchToPreviousTabByID (int index){
+
+    @Step("Navigate back to previous tab")
+    public void switchToPreviousTabByID(int index) {
         Set<String> windowHandles = getDriver().getWindowHandles();
         List<String> windowStrings = new ArrayList<>(windowHandles);
         String preWindow = windowStrings.get(index);
         getDriver().switchTo().window(preWindow);
     }
 
-    public void configMenu(){
+    @Step("Select Menu to config")
+    public void configMenu() {
         configMenuButton.click();
     }
+
+
+
+    @Step("Switch to next Tab by ID")
+    public void switchToTabMenuById(int index) {
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        List<String> windowStrings = new ArrayList<>(windowHandles);
+        String reqWindow = windowStrings.get(index);
+        getDriver().switchTo().window(reqWindow);
+    }
+
+    @Step("Config Menu")
+    public void setConfigMenu(){
+        addNewButton.click();
+    }
+
+    @Step("Insert Menu")
+    public void insertMenu() {
+
+        ArrayList<String> inputMenu =  new ArrayList<>();
+        inputMenu.add("Home");
+        inputMenu.add("Trang chủ");
+        inputMenu.add("About us");
+        inputMenu.add("Giới thiệu");
+        inputMenu.add("Career Oppotunities");
+        inputMenu.add("Cơ hội nghề nghiệp");
+        inputMenu.add("News");
+        inputMenu.add("Tin tức");
+        inputMenu.add("Contact");
+        inputMenu.add("Liên hệ");
+
+        for ()
+
+
+        insertMenuEn.sendKeys("Home");
+        insertMenuVi.sendKeys("Trang Chủ");
+        priorityField.sendKeys("1");
+        selectMain.click();
+        optionHome.click();
+        saveMenuButton.click();
+
+
+        insertMenuEn.sendKeys("About us");
+        insertMenuVi.sendKeys("Giới thiệu");
+        priorityField.sendKeys("2");
+        selectMain.click();
+        optionPage.click();
+        saveMenuButton.click();
+
+        insertMenuEn.sendKeys("Career Oppotunities");
+        insertMenuVi.sendKeys("Cơ hội nghề nghiệp");
+        priorityField.sendKeys("3");
+        selectMain.click();
+        optionCareer.click();
+        saveMenuButton.click();
+
+
+        insertMenuEn.sendKeys("News");
+        insertMenuVi.sendKeys("Tin tức");
+        priorityField.sendKeys("4");
+        selectMain.click();
+        optionList.click();
+        saveMenuButton.click();
+
+
+        insertMenuEn.sendKeys("Contact");
+        insertMenuVi.sendKeys("Liên hệ");
+        priorityField.sendKeys("5");
+        selectMain.click();
+        optionContact.click();
+        saveMenuButton.click();
+
+
+        closeMenu.click();
+    }
+
+}
+
 
 
 
