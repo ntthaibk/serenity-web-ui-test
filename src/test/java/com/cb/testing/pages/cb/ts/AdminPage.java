@@ -206,11 +206,12 @@ public class AdminPage extends BaseTsPage {
                     optionHome.click();
                     saveMenuButton.click();
                     counter.getAndIncrement();
+                    String isRemoved = inputMenuDualLanguage.remove(inputMenuDualLanguage);
+                    System.out.println(isRemoved);
                 }
         );
-
-        closeMenu.click();
     }
+
 
 }
 
