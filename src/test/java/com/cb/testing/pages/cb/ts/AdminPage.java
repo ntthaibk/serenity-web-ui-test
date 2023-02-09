@@ -8,9 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 public class AdminPage extends BaseTsPage {
 
@@ -201,59 +200,25 @@ public class AdminPage extends BaseTsPage {
     @Step("Insert Menu")
     public void insertMenu() {
 
-        ArrayList<String> inputMenu =  new ArrayList<>();
-        inputMenu.add("Home");
-        inputMenu.add("Trang chủ");
-        inputMenu.add("About us");
-        inputMenu.add("Giới thiệu");
-        inputMenu.add("Career Oppotunities");
-        inputMenu.add("Cơ hội nghề nghiệp");
-        inputMenu.add("News");
-        inputMenu.add("Tin tức");
-        inputMenu.add("Contact");
-        inputMenu.add("Liên hệ");
+        Map<String, String> inputMenuDualLanguage = new HashMap<>();
+        inputMenuDualLanguage.put("Home", "Trang chủ");
+        inputMenuDualLanguage.put("About us", "Giới thiệu");
+        inputMenuDualLanguage.put("Career Oppotunities", "Cơ hội nghề nghiệp");
+        inputMenuDualLanguage.put("News", "Tin tức");
+        inputMenuDualLanguage.put("Contact", "Liên hệ");
 
-        for ()
+        int counter = 1;
 
-
-        insertMenuEn.sendKeys("Home");
-        insertMenuVi.sendKeys("Trang Chủ");
-        priorityField.sendKeys("1");
-        selectMain.click();
-        optionHome.click();
-        saveMenuButton.click();
-
-
-        insertMenuEn.sendKeys("About us");
-        insertMenuVi.sendKeys("Giới thiệu");
-        priorityField.sendKeys("2");
-        selectMain.click();
-        optionPage.click();
-        saveMenuButton.click();
-
-        insertMenuEn.sendKeys("Career Oppotunities");
-        insertMenuVi.sendKeys("Cơ hội nghề nghiệp");
-        priorityField.sendKeys("3");
-        selectMain.click();
-        optionCareer.click();
-        saveMenuButton.click();
-
-
-        insertMenuEn.sendKeys("News");
-        insertMenuVi.sendKeys("Tin tức");
-        priorityField.sendKeys("4");
-        selectMain.click();
-        optionList.click();
-        saveMenuButton.click();
-
-
-        insertMenuEn.sendKeys("Contact");
-        insertMenuVi.sendKeys("Liên hệ");
-        priorityField.sendKeys("5");
-        selectMain.click();
-        optionContact.click();
-        saveMenuButton.click();
-
+        inputMenuDualLanguage.forEach(
+                (en, vie) -> {
+                    insertMenuEn.sendKeys(en);
+                    insertMenuVi.sendKeys(vie);
+                    priorityField.sendKeys(String.valueOf(counter));
+                    selectMain.click();
+                    optionHome.click();
+                    saveMenuButton.click();
+                }
+        );
 
         closeMenu.click();
     }
