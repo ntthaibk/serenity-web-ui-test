@@ -2,14 +2,12 @@ package com.cb.testing.pages.cb.ts;
 
 import com.cb.testing.constant.TsPageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.core.steps.Instrumented;
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AdminPage extends BaseTsPage {
 
@@ -198,25 +196,16 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Insert Menu")
-    public void insertMenu() {
-
-        Map<String, String> inputMenuDualLanguage = new HashMap<>();
-        inputMenuDualLanguage.put("Home", "Trang chủ");
-        inputMenuDualLanguage.put("About us", "Giới thiệu");
-        inputMenuDualLanguage.put("Career Oppotunities", "Cơ hội nghề nghiệp");
-        inputMenuDualLanguage.put("News", "Tin tức");
-        inputMenuDualLanguage.put("Contact", "Liên hệ");
-
-        int counter = 1;
-
+    public void insertMenu(Map<String, String> inputMenuDualLanguage, AtomicInteger counter) {
         inputMenuDualLanguage.forEach(
                 (en, vie) -> {
                     insertMenuEn.sendKeys(en);
                     insertMenuVi.sendKeys(vie);
-                    priorityField.sendKeys(String.valueOf(counter));
+                    priorityField.sendKeys(String.valueOf(counter.get()));
                     selectMain.click();
                     optionHome.click();
                     saveMenuButton.click();
+                    counter.getAndIncrement();
                 }
         );
 

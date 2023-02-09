@@ -8,7 +8,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 public class TsModuleTest {
@@ -76,7 +79,15 @@ public class TsModuleTest {
 
         Thread.sleep(1000);
 
-        adminPage.insertMenu();
+        Map<String, String> inputMenuDualLanguage = new HashMap<>();
+        inputMenuDualLanguage.put("Home", "Trang chủ");
+        inputMenuDualLanguage.put("About us", "Giới thiệu");
+        inputMenuDualLanguage.put("Career Oppotunities", "Cơ hội nghề nghiệp");
+        inputMenuDualLanguage.put("News", "Tin tức");
+        inputMenuDualLanguage.put("Contact", "Liên hệ");
+        AtomicInteger counter = new AtomicInteger(1);
+
+        adminPage.insertMenu(inputMenuDualLanguage, counter);
 
         Thread.sleep(4000);
 
