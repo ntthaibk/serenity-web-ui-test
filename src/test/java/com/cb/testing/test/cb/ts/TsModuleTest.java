@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 public class TsModuleTest {
@@ -35,7 +35,7 @@ public class TsModuleTest {
         adminPage.clickOnSaveButtonAddOn();
         adminPage.switchToTabById(0);
         adminPage.configMenu();
-        adminPage.switchToTabMenuById(1);
+        adminPage.switchToTabById(1);
         adminPage.setConfigMenu();
         adminPage.insertMenu(generateAdminPageInputModel());
         adminPage.configCateIndustry();

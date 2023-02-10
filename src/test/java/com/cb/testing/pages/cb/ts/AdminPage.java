@@ -181,31 +181,11 @@ public class AdminPage extends BaseTsPage {
 
         Thread.sleep(2000);
     }
-
-
-    @Step("Navigate back to previous tab")
-    public void switchToPreviousTabByID(int index) {
-        Set<String> windowHandles = getDriver().getWindowHandles();
-        List<String> windowStrings = new ArrayList<>(windowHandles);
-        String preWindow = windowStrings.get(index);
-        getDriver().switchTo().window(preWindow);
-    }
-
     @Step("Select Menu to config")
     public void configMenu() throws InterruptedException {
         configMenuButton.click();
 
         Thread.sleep(2000);
-    }
-
-
-
-    @Step("Switch to next Tab by ID")
-    public void switchToTabMenuById(int index) {
-        Set<String> windowHandles = getDriver().getWindowHandles();
-        List<String> windowStrings = new ArrayList<>(windowHandles);
-        String reqWindow = windowStrings.get(index);
-        getDriver().switchTo().window(reqWindow);
     }
 
     @Step("Config Menu")
@@ -241,14 +221,6 @@ public class AdminPage extends BaseTsPage {
         configCateIndustryButton.click();
 
         Thread.sleep(1000);
-    }
-
-    @Step("Switch to next Tab by ID")
-    public void switchToTabCateIndustryById(int index) {
-        Set<String> windowHandles = getDriver().getWindowHandles();
-        List<String> windowStrings = new ArrayList<>(windowHandles);
-        String reqWindow = windowStrings.get(index);
-        getDriver().switchTo().window(reqWindow);
     }
 
     @Step("check these checkboxes")
