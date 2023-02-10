@@ -17,76 +17,50 @@ public class AdminPage extends BaseTsPage {
     private static final String LOGIN_PATH = "login";
     @FindBy(xpath = "//input[@name = \"user\"]")
     private WebElementFacade userName;
-
     @FindBy(xpath = "//input[@name= \"pwd\"]")
     private WebElementFacade password;
-
     @FindBy(xpath = "//input[@value= \"Enter\"]")
     private WebElementFacade enterButton;
-
     @FindBy(xpath = "//li[@id= \"yui-gen1\"]")
     private WebElementFacade employerButton;
-
     @FindBy(xpath = "//*[@name = \"chkSearchBy\" and @value=\"1\"]")
     private WebElementFacade keywordButton;
-
     @FindBy(xpath = "//*[@name = \"keyword\" and @id=\"id_keyword_1\"]")
     private WebElementFacade inputKeyword;
-
     @FindBy(xpath = "//*[@name = \"btnSearch\" and @value=\" Filter \"]")
     private WebElementFacade filterButton;
-
     @FindBy(xpath = "//a[@href=\"javascript:editRw('dhphuxuan')\"]")
     private WebElementFacade configOwner;
-
     @FindBy(xpath = "//a[contains(text(),'Config function Add On')]")
     private WebElementFacade configAddOnTab;
-
-
     @FindBy(xpath = "//div[@id = 'tab_Addon']//div[@class = 'col_right']/input[contains(@type,'button')]")
     private WebElementFacade saveAddOnButton;
-
     @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/news/index/owner/dhphuxuan\"]")
     private WebElementFacade configMenuButton;
-
-
     @FindBy(xpath = "//input[@value = 'Add New']")
     private WebElementFacade addNewButton;
-
     @FindBy(xpath = "//input[@name = 'txtName[en]']")
     private WebElementFacade insertMenuEn;
-
     @FindBy(xpath = "//input[@name = 'txtName[vi]']")
     private WebElementFacade insertMenuVi;
-
     @FindBy(xpath = "//select[@name = 'selMainCate']")
     private WebElementFacade selectMain;
-
     @FindBy(xpath = "//input[@name = 'txtOrder']")
     private WebElementFacade priorityField;
-
     @FindBy(xpath = "//div[@id ='result_search']//input[@value = 'Save']")
     private WebElementFacade saveMenuButton;
-
     @FindBy(xpath = "//input[@value= '2']")
     private WebElementFacade optionPage;
-
     @FindBy(xpath = "//input[@value= '3']")
     private WebElementFacade optionList;
-
     @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '7']")
     private WebElementFacade optionHome;
-
     @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '6']")
     private WebElementFacade optionContact;
-
     @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '3']")
     private WebElementFacade optionCareer;
-
     @FindBy(xpath = "//a[@href=\"javascript:window.close()\"]")
     private WebElementFacade closeMenu;
-
-
     @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/cate/index/owner/dhphuxuan\"]")
     private WebElementFacade configCateIndustryButton;
 
