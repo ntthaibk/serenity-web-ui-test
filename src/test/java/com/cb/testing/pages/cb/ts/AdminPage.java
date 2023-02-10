@@ -1,6 +1,8 @@
 package com.cb.testing.pages.cb.ts;
 
 import com.cb.testing.constant.TsPageUrlConstant;
+import com.cb.testing.model.AdminPageInputModel;
+import lombok.Getter;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.FindBy;
@@ -9,11 +11,10 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Getter
 public class AdminPage extends BaseTsPage {
 
     private static final String LOGIN_PATH = "login";
-
-
     @FindBy(xpath = "//input[@name = \"user\"]")
     private WebElementFacade userName;
 
@@ -61,10 +62,6 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//select[@name = 'selMainCate']")
     private WebElementFacade selectMain;
 
-    @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '7']")
-    private WebElementFacade optionHome;
-
-
     @FindBy(xpath = "//input[@name = 'txtOrder']")
     private WebElementFacade priorityField;
 
@@ -76,6 +73,9 @@ public class AdminPage extends BaseTsPage {
 
     @FindBy(xpath = "//input[@value= '3']")
     private WebElementFacade optionList;
+
+    @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '7']")
+    private WebElementFacade optionHome;
 
     @FindBy(xpath = "//select[@name ='selFuncPage']//option[@value = '6']")
     private WebElementFacade optionContact;
@@ -200,18 +200,23 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Insert Menu")
-    public void insertMenu(Map<String, String> inputMenuDualLanguage, AtomicInteger counter) {
-        inputMenuDualLanguage.forEach(
-                (en, vie) -> {
-                    insertMenuEn.sendKeys(en);
-                    insertMenuVi.sendKeys(vie);
-                    priorityField.sendKeys(String.valueOf(counter.get()));
+    public void insertMenu(List<AdminPageInputModel> inputModels) {
+        inputModels.forEach(
+                inputModel -> {
+                    insertMenuEn.sendKeys(inputModel.getEnValue());
+                    insertMenuVi.sendKeys(inputModel.getVieValue());
+                    priorityField.sendKeys(inputModel.getPriority());
                     selectMain.click();
-                    optionHome.click();
+                    inputModel.getButtonToClick().click();
                     saveMenuButton.click();
-                    counter.getAndIncrement();
-                    String isRemoved = inputMenuDualLanguage.remove(inputMenuDualLanguage);
-                    System.out.println(isRemoved);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    insertMenuEn.clear();
+                    insertMenuVi.clear();
+                    priorityField.clear();
                 }
         );
         getDriver().close();

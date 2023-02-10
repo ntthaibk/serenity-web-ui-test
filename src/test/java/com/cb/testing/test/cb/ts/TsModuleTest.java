@@ -1,5 +1,6 @@
 package com.cb.testing.test.cb.ts;
 
+import com.cb.testing.model.AdminPageInputModel;
 import com.cb.testing.pages.cb.ts.AdminPage;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Managed;
@@ -80,17 +81,43 @@ public class TsModuleTest {
 
         Thread.sleep(1000);
 
-        Map<String, String> inputMenuDualLanguage = new HashMap<>();
-        inputMenuDualLanguage.put("Home", "Trang chủ");
-        inputMenuDualLanguage.put("About us", "Giới thiệu");
-        inputMenuDualLanguage.put("Career Oppotunities", "Cơ hội nghề nghiệp");
-        inputMenuDualLanguage.put("News", "Tin tức");
-        inputMenuDualLanguage.put("Contact", "Liên hệ");
+        List<AdminPageInputModel> adminPageInputModels = new ArrayList<>();
+        AdminPageInputModel homeInput = new AdminPageInputModel();
+        homeInput.setPriority("1");
+        homeInput.setEnValue("Home");
+        homeInput.setVieValue("Trang chủ");
+        homeInput.setButtonToClick(adminPage.getOptionHome());
 
-        AtomicInteger counter = new AtomicInteger(1);
+        AdminPageInputModel aboutUsInput = new AdminPageInputModel();
+        aboutUsInput.setPriority("2");
+        aboutUsInput.setEnValue("About us");
+        aboutUsInput.setVieValue("Giới thiệu");
+        aboutUsInput.setButtonToClick(adminPage.getOptionPage());
 
+        AdminPageInputModel careerInput = new AdminPageInputModel();
+        careerInput.setPriority("3");
+        careerInput.setEnValue("Career Opportunities");
+        careerInput.setVieValue("Cơ hội nghề nghiệp");
+        careerInput.setButtonToClick(adminPage.getOptionCareer());
 
-        adminPage.insertMenu(inputMenuDualLanguage, counter);
+        AdminPageInputModel newsInput = new AdminPageInputModel();
+        newsInput.setPriority("4");
+        newsInput.setEnValue("News");
+        newsInput.setVieValue("Tin tức");
+        newsInput.setButtonToClick(adminPage.getOptionList());
+
+        AdminPageInputModel contactInput = new AdminPageInputModel();
+        contactInput.setPriority("5");
+        contactInput.setEnValue("Contact");
+        contactInput.setVieValue("Liên hệ");
+        contactInput.setButtonToClick(adminPage.getOptionContact());
+
+        adminPageInputModels.add(homeInput);
+        adminPageInputModels.add(aboutUsInput);
+        adminPageInputModels.add(careerInput);
+        adminPageInputModels.add(newsInput);
+        adminPageInputModels.add(contactInput);
+        adminPage.insertMenu(adminPageInputModels);
 
         Thread.sleep(6000);
 
