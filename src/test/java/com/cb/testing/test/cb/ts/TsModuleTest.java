@@ -22,7 +22,7 @@ public class TsModuleTest {
 
 
     @Test
-    public void testTSPage () throws InterruptedException {
+    void testTSPage () throws InterruptedException {
         adminPage.navigateAdminLoginPage();
         adminPage.loginWithUsernameAndPassword();
         adminPage.clickOnEmployerButton();
