@@ -9,10 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ExtendWith(SerenityJUnit5Extension.class)
@@ -81,7 +78,31 @@ public class TsModuleTest {
 
         Thread.sleep(1000);
 
-        List<AdminPageInputModel> adminPageInputModels = new ArrayList<>();
+        adminPage.insertMenu(generateAdminPageInputModel());
+
+        Thread.sleep(6000);
+
+        adminPage.configCateIndustry();
+        Thread.sleep(1000);
+
+
+        adminPage.switchToTabCateIndustryById(1);
+        Thread.sleep(1000);
+
+        List<String> checkBoxCateIds = new ArrayList<>();
+        checkBoxCateIds.add("1");
+        checkBoxCateIds.add("2");
+        checkBoxCateIds.add("3");
+        checkBoxCateIds.add("4");
+        checkBoxCateIds.add("5");
+        adminPage.clickOnIndustryCheckBox(checkBoxCateIds);
+        Thread.sleep(2000);
+
+
+
+    }
+
+    private List<AdminPageInputModel> generateAdminPageInputModel(){
         AdminPageInputModel homeInput = new AdminPageInputModel();
         homeInput.setPriority("1");
         homeInput.setEnValue("Home");
@@ -112,33 +133,7 @@ public class TsModuleTest {
         contactInput.setVieValue("Liên hệ");
         contactInput.setButtonToClick(adminPage.getOptionContact());
 
-        adminPageInputModels.add(homeInput);
-        adminPageInputModels.add(aboutUsInput);
-        adminPageInputModels.add(careerInput);
-        adminPageInputModels.add(newsInput);
-        adminPageInputModels.add(contactInput);
-        adminPage.insertMenu(adminPageInputModels);
-
-        Thread.sleep(6000);
-
-        adminPage.configCateIndustry();
-        Thread.sleep(1000);
-
-
-        adminPage.switchToTabCateIndustryById(1);
-        Thread.sleep(1000);
-
-        List<String> checkBoxCateIds = new ArrayList<>();
-        checkBoxCateIds.add("1");
-        checkBoxCateIds.add("2");
-        checkBoxCateIds.add("3");
-        checkBoxCateIds.add("4");
-        checkBoxCateIds.add("5");
-        adminPage.clickOnIndustryCheckBox(checkBoxCateIds);
-        Thread.sleep(2000);
-
-
-
+        return new ArrayList<>(Arrays.asList(homeInput, aboutUsInput, careerInput, newsInput, contactInput));
     }
 
 
