@@ -99,33 +99,39 @@ public class AdminPage extends BaseTsPage {
 
 
     @Step("login with username and password")
-    public void loginWithUsernameAndPassword() {
+    public void loginWithUsernameAndPassword() throws InterruptedException {
         userName.sendKeys("adminrws");
         password.sendKeys("123456");
         clickOn(enterButton);
+        Thread.sleep(4000);
 
     }
 
     @Step("click on employer button")
-    public void clickOnEmployerButton() {
+    public void clickOnEmployerButton() throws InterruptedException {
         employerButton.click();
+
+        Thread.sleep(2000);
 
     }
 
     @Step("click on keyword")
-    public void clickOnKeyword() {
+    public void clickOnKeyword() throws InterruptedException {
         keywordButton.click();
+        Thread.sleep(2000);
     }
 
     @Step("input keyword")
-    public void setInputKeyword() {
+    public void setInputKeyword() throws InterruptedException {
         inputKeyword.sendKeys("dhphuxuan");
         clickOn(filterButton);
+        Thread.sleep(2000);
     }
 
     @Step("set config owner")
-    public void setConfigOwner() {
+    public void setConfigOwner() throws InterruptedException {
         configOwner.click();
+        Thread.sleep(2000);
     }
 
     @Step("Switch to Next Tab")
@@ -137,20 +143,23 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Switch to next Tab by ID")
-    public void switchToNextTabById(int index) {
+    public void switchToTabById(int index) throws InterruptedException {
         Set<String> windowHandles = getDriver().getWindowHandles();
         List<String> windowStrings = new ArrayList<>(windowHandles);
         String reqWindow = windowStrings.get(index);
         getDriver().switchTo().window(reqWindow);
+
+        Thread.sleep(2000);
     }
 
     @Step("click on config add on tab")
-    public void configFunctionAddOn() {
+    public void configFunctionAddOn() throws InterruptedException {
         configAddOnTab.click();
+        Thread.sleep(4000);
     }
 
     @Step("check these checkboxes")
-    public void clickOnTheCheckBox(List<String> checkBoxIds) {
+    public void clickOnTheCheckBox(List<String> checkBoxIds) throws InterruptedException {
         checkBoxIds.forEach(
                 checkBoxId -> {
                     WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk[]\" and @value=\"%s\"]", checkBoxId));
@@ -162,12 +171,15 @@ public class AdminPage extends BaseTsPage {
                     }
                 }
         );
+        Thread.sleep(2000);
     }
 
     @Step("Save config add on")
-    public void clickOnSaveButtonAddOn() {
+    public void clickOnSaveButtonAddOn() throws InterruptedException {
         saveAddOnButton.click();
         getDriver().close();
+
+        Thread.sleep(2000);
     }
 
 
@@ -180,8 +192,10 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Select Menu to config")
-    public void configMenu() {
+    public void configMenu() throws InterruptedException {
         configMenuButton.click();
+
+        Thread.sleep(2000);
     }
 
 
@@ -195,8 +209,10 @@ public class AdminPage extends BaseTsPage {
     }
 
     @Step("Config Menu")
-    public void setConfigMenu(){
+    public void setConfigMenu() throws InterruptedException {
         addNewButton.click();
+
+        Thread.sleep(1000);
     }
 
     @Step("Insert Menu")
@@ -219,11 +235,12 @@ public class AdminPage extends BaseTsPage {
                     priorityField.clear();
                 }
         );
-        getDriver().close();
     }
 
-    public void configCateIndustry(){
+    public void configCateIndustry() throws InterruptedException {
         configCateIndustryButton.click();
+
+        Thread.sleep(1000);
     }
 
     @Step("Switch to next Tab by ID")

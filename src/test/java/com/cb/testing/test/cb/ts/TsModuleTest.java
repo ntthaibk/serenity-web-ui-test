@@ -25,49 +25,30 @@ public class TsModuleTest {
     public void testTSPage () throws InterruptedException {
         adminPage.navigateAdminLoginPage();
         adminPage.loginWithUsernameAndPassword();
-        Thread.sleep(4000);
         adminPage.clickOnEmployerButton();
-        Thread.sleep(2000);
         adminPage.clickOnKeyword();
-        Thread.sleep(2000);
         adminPage.setInputKeyword();
-        Thread.sleep(2000);
         adminPage.setConfigOwner();
-        Thread.sleep(2000);
-        adminPage.switchToNextTabById(1);
-        Thread.sleep(2000);
+        adminPage.switchToTabById(1);
         adminPage.configFunctionAddOn();
-        Thread.sleep(4000);
-        List<String> checkBoxIds = new ArrayList<>();
-        checkBoxIds.add("10");
-        checkBoxIds.add("19");
-        adminPage.clickOnTheCheckBox(checkBoxIds);
-        Thread.sleep(2000);
+        adminPage.clickOnTheCheckBox(generateCheckboxesId());
         adminPage.clickOnSaveButtonAddOn();
-        Thread.sleep(2000);
-        adminPage.switchToPreviousTabByID(0);
-        Thread.sleep(2000);
+        adminPage.switchToTabById(0);
         adminPage.configMenu();
-        Thread.sleep(2000);
         adminPage.switchToTabMenuById(1);
-        Thread.sleep(1000);
         adminPage.setConfigMenu();
-        Thread.sleep(1000);
         adminPage.insertMenu(generateAdminPageInputModel());
-        Thread.sleep(6000);
         adminPage.configCateIndustry();
-        Thread.sleep(1000);
-        adminPage.switchToTabCateIndustryById(1);
-        Thread.sleep(1000);
-        List<String> checkBoxCateIds = new ArrayList<>();
-        checkBoxCateIds.add("1");
-        checkBoxCateIds.add("2");
-        checkBoxCateIds.add("3");
-        checkBoxCateIds.add("4");
-        checkBoxCateIds.add("5");
-        adminPage.clickOnIndustryCheckBox(checkBoxCateIds);
-        Thread.sleep(2000);
+        adminPage.switchToTabById(1);
+        adminPage.clickOnIndustryCheckBox(generateCheckboxCateIds());
+    }
 
+    private List<String> generateCheckboxCateIds(){
+        return new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5"));
+    }
+
+    private List<String> generateCheckboxesId(){
+        return new ArrayList<>(Arrays.asList("10", "19"));
     }
 
     private List<AdminPageInputModel> generateAdminPageInputModel(){
