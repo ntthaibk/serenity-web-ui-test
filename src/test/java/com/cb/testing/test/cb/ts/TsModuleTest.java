@@ -82,6 +82,7 @@ public class TsModuleTest {
         contactInput.setVieValue("Liên hệ");
         contactInput.setButtonToClick(adminPage.getOptionContact());
 
+
         return new ArrayList<>(Arrays.asList(homeInput, aboutUsInput, careerInput, newsInput, contactInput));
     }
 

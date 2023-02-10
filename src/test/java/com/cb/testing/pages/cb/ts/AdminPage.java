@@ -5,11 +5,11 @@ import com.cb.testing.model.AdminPageInputModel;
 import lombok.Getter;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 public class AdminPage extends BaseTsPage {
@@ -171,24 +171,28 @@ public class AdminPage extends BaseTsPage {
 
     @Step("Insert Menu")
     public void insertMenu(List<AdminPageInputModel> inputModels) {
-        inputModels.forEach(
-                inputModel -> {
-                    insertMenuEn.sendKeys(inputModel.getEnValue());
-                    insertMenuVi.sendKeys(inputModel.getVieValue());
-                    priorityField.sendKeys(inputModel.getPriority());
-                    selectMain.click();
-                    inputModel.getButtonToClick().click();
-                    saveMenuButton.click();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    insertMenuEn.clear();
-                    insertMenuVi.clear();
-                    priorityField.clear();
+        Iterator itr = inputModels.iterator();
+
+
+        for (AdminPageInputModel inputModel : inputModels) {
+            while (itr.hasNext()) {
+                insertMenuEn.sendKeys(inputModel.getEnValue());
+                insertMenuVi.sendKeys(inputModel.getVieValue());
+                priorityField.sendKeys(inputModel.getPriority());
+                selectMain.click();
+                inputModel.getButtonToClick().click();
+                saveMenuButton.click();
+                configMenuButton.click();
+                addNewButton.click();
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
-        );
+            }
+            break;
+        }
     }
 
     public void configCateIndustry() throws InterruptedException {
