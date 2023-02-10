@@ -87,6 +87,10 @@ public class AdminPage extends BaseTsPage {
     private WebElementFacade closeMenu;
 
 
+    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/cate/index/owner/dhphuxuan\"]")
+    private WebElementFacade configCateIndustryButton;
+
+
     @Step("navigate to ts admin page")
     public void navigateAdminLoginPage() {
         String fullPageURL = TsPageUrlConstant.TS_HOME_PAGE + LOGIN_PATH;
@@ -208,6 +212,34 @@ public class AdminPage extends BaseTsPage {
                     counter.getAndIncrement();
                     String isRemoved = inputMenuDualLanguage.remove(inputMenuDualLanguage);
                     System.out.println(isRemoved);
+                }
+        );
+        getDriver().close();
+    }
+
+    public void configCateIndustry(){
+        configCateIndustryButton.click();
+    }
+
+    @Step("Switch to next Tab by ID")
+    public void switchToTabCateIndustryById(int index) {
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        List<String> windowStrings = new ArrayList<>(windowHandles);
+        String reqWindow = windowStrings.get(index);
+        getDriver().switchTo().window(reqWindow);
+    }
+
+    @Step("check these checkboxes")
+    public void clickOnIndustryCheckBox(List<String> checkBoxCateIds) {
+        checkBoxCateIds.forEach(
+                checkBoxId -> {
+                    WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk_%s\" and @value=\"1\"]", checkBoxCateIds));
+                    clickOn(currentCheckbox);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
         );
     }

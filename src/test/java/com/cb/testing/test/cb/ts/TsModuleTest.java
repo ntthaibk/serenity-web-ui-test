@@ -94,6 +94,22 @@ public class TsModuleTest {
 
         Thread.sleep(6000);
 
+        adminPage.configCateIndustry();
+        Thread.sleep(1000);
+
+
+        adminPage.switchToTabCateIndustryById(1);
+        Thread.sleep(1000);
+
+        List<String> checkBoxCateIds = new ArrayList<>();
+        checkBoxCateIds.add("1");
+        checkBoxCateIds.add("2");
+        checkBoxCateIds.add("3");
+        checkBoxCateIds.add("4");
+        checkBoxCateIds.add("5");
+        adminPage.clickOnIndustryCheckBox(checkBoxCateIds);
+        Thread.sleep(2000);
+
 
 
     }
