@@ -89,7 +89,8 @@ public class AdminPage extends BaseTsPage {
     @FindBy(xpath = "//input[@type =\"submit\" and @value= \"Save\"]")
     private WebElementFacade saveDegreeButton;
 
-    private static String ownerName = "//td/a[text()='%s']";
+    private static final String ownerNameLabel = "//td/a[text()='%s']";
+    private String ownerName = "";
 
 
     @Step("navigate to ts admin page")
@@ -125,6 +126,7 @@ public class AdminPage extends BaseTsPage {
     @Step("input keyword")
     public void setKeywordOwner(String keywordOwner) throws InterruptedException {
         this.keywordOwner.sendKeys(keywordOwner);
+        this.ownerName = keywordOwner;
         Thread.sleep(2000);
     }
 
@@ -136,7 +138,7 @@ public class AdminPage extends BaseTsPage {
 
     @Step("set config owner")
     public void clickOnOwnerName() throws InterruptedException {
-        String.format("%s", ownerName);
+        String.format(this.ownerNameLabel, this.ownerName);
         Thread.sleep(2000);
     }
 
