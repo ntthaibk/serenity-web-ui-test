@@ -9,6 +9,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 public class AdminPageInputModel {
     private String enValue;
     private String vieValue;
-    private WebElementFacade buttonToClick;
+    private WebElementFacade buttonToClick1;
+    private WebElementFacade buttonToClick2;
+    private WebElementFacade buttonToClick3;
     private String priority;
 }
