@@ -136,7 +136,7 @@ public class AdminPage extends BaseTsPage {
         Thread.sleep(1000);
     }
 
-    @Step("set config owner")
+    @Step("click on Owner name (the owner that just created)")
     public void clickOnOwnerName() throws InterruptedException {
         String.format(this.ownerNameLabel, this.ownerName);
         Thread.sleep(2000);
