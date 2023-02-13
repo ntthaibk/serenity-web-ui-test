@@ -138,7 +138,9 @@ public class AdminPage extends BaseTsPage {
 
     @Step("click on Owner name (the owner that just created)")
     public void clickOnOwnerName() throws InterruptedException {
-        String.format(this.ownerNameLabel, this.ownerName);
+        WebElementFacade ownerLabel = $(String.format(this.ownerNameLabel, this.ownerName));
+        ownerLabel.click();
+
         Thread.sleep(2000);
     }
 
