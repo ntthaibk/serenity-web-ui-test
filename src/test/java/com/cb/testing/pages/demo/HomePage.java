@@ -1,6 +1,6 @@
 package com.cb.testing.pages.demo;
 
-import com.cb.testing.constant.DemoPageUrlConstant;
+import com.cb.testing.Demo.DemoPageUrlConstant;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.FindBy;

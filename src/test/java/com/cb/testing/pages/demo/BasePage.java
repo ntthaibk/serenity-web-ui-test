@@ -1,6 +1,6 @@
 package com.cb.testing.pages.demo;
 
-import com.cb.testing.constant.DemoPageUrlConstant;
+import com.cb.testing.Demo.DemoPageUrlConstant;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;

@@ -1,4 +1,4 @@
-package com.cb.testing.test;
+package com.cb.testing.test.cb.ts.DemoModuleTest;
 
 import com.cb.testing.pages.demo.HomePage;
 import com.cb.testing.pages.demo.QandAPage;

@@ -1,12 +1,14 @@
-package com.cb.testing.pages.cb.ts;
+package com.cb.testing.pages.cb.ts.TsVietnam;
 
-import com.cb.testing.constant.TsPageUrlConstant;
+import com.cb.testing.constant.TsVietnam.TsPageUrlConstant;
 import com.cb.testing.model.AdminPageInputModel;
 import com.cb.testing.model.CheckBoxInMenuPageModel;
 import lombok.Getter;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.*;
 import java.util.List;
@@ -34,7 +36,7 @@ public class AdminPage extends BaseTsPage {
     private WebElementFacade configAddOnTab;
     @FindBy(xpath = "//div[@id = 'tab_Addon']//div[@class = 'col_right']/input[contains(@type,'button')]")
     private WebElementFacade saveAddOnButton;
-    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/news/index/owner/dhphuxuan\"]")
+    @FindBy(xpath = "//*[contains(text(),'Menu/Submenu')]")
     private WebElementFacade configMenuButton;
     @FindBy(xpath = "//input[@value = 'Add New']")
     private WebElementFacade addNewButton;
@@ -60,30 +62,47 @@ public class AdminPage extends BaseTsPage {
     private WebElementFacade optionCareer;
     @FindBy(xpath = "//a[@href=\"javascript:window.close()\"]")
     private WebElementFacade closeMenu;
-    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/cate/index/owner/dhphuxuan\"]")
+    @FindBy(xpath = "//input[@type=\"button\" and @value = \"Update\"]")
+    private WebElementFacade updateMenuButton;
+    @FindBy(xpath = "//*[contains(text(),'Cate/Industry')]")
     private WebElementFacade configCateIndustryButton;
 
-    private String checkboxInMenuPage = "//tr/td[contains(.,'%s')]/following-sibling::td/input[contains(@name,'%s')]";
+    @FindBy(xpath = "//input[@value=\"create talent network\"]")
+    private WebElementFacade createTalentNetworkButton;
+
+    @FindBy(xpath = "//input[@value=\"create auto talent network\"]")
+    private WebElementFacade createAutoTalentNetwork;
+
+        private String checkboxInMenuPage = "//tr/td[contains(.,'%s')]/following-sibling::td/input[contains(@name,'%s')]";
 
     @FindBy(xpath = "//input[@type = \"submit\" and @value=\"Save\"]")
     private WebElementFacade saveIndustryButton;
 
-    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/location/index/owner/dhphuxuan\"]")
+    @FindBy(xpath = "//a[contains(text(),'Location')]")
     private WebElementFacade configLocationButton;
+
+    private String checkboxLanguage = "//input[@type=\"checkbox\" and @value = \"%s\"]";
+    private String radioLanguage = "//input[@type=\"radio\" and @value = \"%s\"]";
+
+    @FindBy(xpath = "//input[@type=\"radio\" and @value = \"vi\"]")
+    private WebElementFacade viRadioOptionButton;
+
+    @FindBy(xpath = "//div[@class=\"tab_TS_leftcol\"]//input[@value = \"Save\"]")
+    private WebElementFacade saveConfigTalentSolutionButton;
 
 
     @FindBy(xpath = "//input[@name =\"btnButton\" and @value = \"Save\"]")
     private WebElementFacade saveLocationButton;
 
 
-    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/level/index/owner/dhphuxuan\"]")
+    @FindBy(xpath = "//a[contains(text(),'Level')]")
     private WebElementFacade configLevelButton;
 
 
     @FindBy(xpath = "//input[@type =\"submit\" and @value= \"Save\"]")
     private WebElementFacade saveLevelButton;
 
-    @FindBy(xpath = "//a[@href=\"https://admin.talentnetworkdev.vn/degree/index/owner/dhphuxuan\"]")
+    @FindBy(xpath = "//a[contains(text(),'Degree')]")
     private WebElementFacade configDegreeButton;
 
     @FindBy(xpath = "//input[@type =\"submit\" and @value= \"Save\"]")
@@ -91,6 +110,48 @@ public class AdminPage extends BaseTsPage {
 
     private static final String ownerNameLabel = "//td/a[text()='%s']";
     private String ownerName = "";
+
+
+    @FindBy (xpath = "//option[@value = '%s']")
+    private String templateType;
+
+    private static final String template = "//option[@value = '%s']";
+
+    @FindBy(xpath = "//li//a[contains(text(),'Create Talent Network')]")
+    private WebElementFacade createNewTsOption;
+
+    @FindBy(xpath = "//input[@id=\"txtEmpId\"]")
+    private WebElementFacade employerIDField;
+
+    @FindBy(xpath = "//input[@id=\"btnCheckEmployer\"]")
+    private WebElementFacade checkEmployerIDButton;
+
+    @FindBy(xpath = "//select[@id='selTemplate']")
+    private WebElementFacade selectTemplateList;
+
+    @FindBy(xpath = "//select[@id='selOwnerClone']")
+    private WebElementFacade selectOwnerCopyList;
+
+
+    private static final String ownerCopy = "//option[@value = '%s']";
+
+    @FindBy(xpath = "//input[@name='txtURL']")
+    private WebElementFacade ownerDomainField;
+
+    @FindBy(xpath = "//input[@name='txtOwner']")
+    private WebElementFacade insertOwnerName;
+
+    @FindBy(xpath = "//input[@name='txtReOwner']")
+    private WebElementFacade insertReOwnerName;
+
+    @FindBy(xpath = "//input[@value='Save']")
+    private WebElementFacade saveOwnerButton;
+
+    @FindBy(xpath = "//li//a[contains(text(),'Config Talent Solution')]")
+    private WebElementFacade configTalentSolutionTab;
+
+    public AdminPage() {
+    }
 
 
     @Step("navigate to ts admin page")
@@ -106,6 +167,11 @@ public class AdminPage extends BaseTsPage {
         this.password.sendKeys(password);
         clickOn(enterButton);
         Thread.sleep(4000);
+
+    }
+
+    @Step("create new talent network")
+    public void createTalentNetwork() throws InterruptedException {
 
     }
 
@@ -162,6 +228,40 @@ public class AdminPage extends BaseTsPage {
         getDriver().switchTo().window(allWindows.get(index));
 
         Thread.sleep(2000);
+    }
+
+
+    @Step("click on Config talent solution tab")
+    public void clickOnConfigTalentSolutionTab(){
+        configTalentSolutionTab.click();
+    }
+
+    @Step("check Language checkboxes")
+    public void clickOnTheLanguageCheckBox(List<String> checkBoxIds) throws InterruptedException {
+        checkBoxIds.forEach(
+                checkBoxValue -> {
+                    WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @value = \"%s\"]", checkBoxValue));
+                    clickOn(currentCheckbox);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
+        Thread.sleep(2000);
+    }
+
+    @Step("select Vi language radio button")
+    public void clickOnTheLanguageRadioButton(){
+        viRadioOptionButton.click();
+    }
+
+
+    @Step("Save Config Talent Solution")
+    public void clickOnSaveConfigTalentSolutionButton() {
+        saveConfigTalentSolutionButton.click();
+        getDriver().close();
     }
 
     @Step("click on config add on tab")
@@ -257,7 +357,14 @@ public class AdminPage extends BaseTsPage {
         );
     }
 
-    @Step("Click on Cate Industry buton")
+    @Step("Click on update menu button")
+    public void clickOnUpdateMenuCheckbox() throws InterruptedException {
+        updateMenuButton.click();
+
+        Thread.sleep(1000);
+    }
+
+    @Step("Click on Cate Industry button")
     public void clickOnConfigCateIndustryButton() throws InterruptedException {
         configCateIndustryButton.click();
 
@@ -271,7 +378,7 @@ public class AdminPage extends BaseTsPage {
                     WebElementFacade currentCheckbox = $(String.format("//input[@type=\"checkbox\" and @name=\"chk_%s\" and @value=\"1\"]", checkBoxId));
                     clickOn(currentCheckbox);
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -363,6 +470,72 @@ public class AdminPage extends BaseTsPage {
     @Step("Click on save degree button")
     public void clickOnSaveDegreeButton() {
         saveDegreeButton.click();
+    }
+
+
+    @Step("Create new TS")
+    public void hoverAndClickOnCreateNewTs() throws InterruptedException {
+
+        Actions hoverEmployerButton = new Actions(getDriver());
+        hoverEmployerButton.moveToElement(employerButton).build().perform();
+
+        WebElementFacade element = $(createNewTsOption).waitUntilClickable();
+        element.click();
+    }
+
+    @Step("Check empty Employer ID")
+    public void insertEmloyerIDToCheck(String employerID) throws InterruptedException {
+        this.employerIDField.sendKeys(employerID);
+        WebElementFacade element = $(checkEmployerIDButton).waitUntilClickable();
+        element.click();
+    }
+
+    @Step("Create regular TS")
+    public void createRegularTalentNetWork() throws InterruptedException {
+        createTalentNetworkButton.click();
+    }
+
+    @Step("Create auto TS")
+    public void createAutoTalentNetwork() throws InterruptedException {
+        createAutoTalentNetwork.click();
+    }
+
+
+    @Step("Select Owner Template")
+    public void selectOwnerTemplate(String template) {
+        selectTemplateList.click();
+        Select select = new Select((selectTemplateList));
+        select.selectByValue(template);
+    }
+
+    @Step("select owner copy")
+    public void selectOwnerCopy(String ownerCopy) {
+        selectOwnerCopyList.click();
+        Select select = new Select((selectOwnerCopyList));
+        select.selectByValue(ownerCopy);
+
+    }
+
+    @Step("insert domain for new ts")
+    public void inputDomainName(String domain) {
+        ownerDomainField.clear();
+        this.ownerDomainField.sendKeys(domain);
+    }
+
+    @Step("insert new owner name")
+    public void inputOwnerName(String newOwnerName){
+        this.insertOwnerName.sendKeys(newOwnerName);
+    }
+
+    @Step("insert re-owner name")
+    public void inputReOwnerName(String newReOwnerName){
+        this.insertReOwnerName.sendKeys(newReOwnerName);
+    }
+
+    @Step("save new created owner")
+    public void saveNewOwner() throws InterruptedException {
+        saveOwnerButton.click();
+        Thread.sleep(2000);
     }
 }
 
